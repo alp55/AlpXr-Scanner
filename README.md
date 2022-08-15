@@ -1,2 +1,2 @@
-# Linux_Vulnerability
+# Linux Vulnerability Scanner
 
