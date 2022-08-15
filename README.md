@@ -6,7 +6,7 @@ Kurulum
 
 ``` 
 
- -git clone https://github.com/alp55/Linux_Vulnerability_Scanner.git
+ git clone https://github.com/alp55/Linux_Vulnerability_Scanner.git
 
 ```
 
@@ -14,6 +14,6 @@ Kurulum
 
 ```
 
--sudo python3 AlpXr.py
+sudo python3 AlpXr.py
 
 ```
