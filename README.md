@@ -10,6 +10,14 @@ Kurulum
 
 ```
 
+Yardımcı Tool Kurulumu
+
+``` 
+
+ sudo apt install lynis
+
+```
+
 Çalıştırma 
 
 ```
