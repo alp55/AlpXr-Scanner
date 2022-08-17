@@ -9,24 +9,22 @@ Kurulum
 ``` 
 
  git clone https://github.com/alp55/Linux_Vulnerability_Scanner.git
-
+ 
 ```
 Gerekli Tool Kurulumu
 
 ``` 
-
  sudo apt install lynis
  sudo apt update
  sudo apt upgrade
-
-
-
+ 
 ```
 
 Çalıştırma 
 
 ```
+
  cd Linux_Vulnerability_Scanner
  sudo python3 AlpXr.py
-
+ 
 ```
