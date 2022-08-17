@@ -14,6 +14,7 @@ Kurulum
 Gerekli Tool Kurulumu
 
 ``` 
+
  sudo apt install lynis
  sudo apt update
  sudo apt upgrade
