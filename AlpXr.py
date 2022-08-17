@@ -1,12 +1,33 @@
 import os
-
 from termcolor import colored
-import pyfiglet 
 import socket
 import time
+import webbrowser
 
-alpxr_figlet=colored(pyfiglet.figlet_format("AlpXr", font = "standard"),'red')
-print(alpxr_figlet)
+print(colored("""                                                                                                     
+               AAA               lllllll                    XXXXXXX       XXXXXXX                    
+              A:::A              l:::::l                    X:::::X       X:::::X                    
+             A:::::A             l:::::l                    X:::::X       X:::::X                    
+            A:::::::A            l:::::l                    X::::::X     X::::::X                    
+           A:::::::::A            l::::lppppp   ppppppppp   XXX:::::X   X:::::XXXrrrrr   rrrrrrrrr   
+          A:::::A:::::A           l::::lp::::ppp:::::::::p     X:::::X X:::::X   r::::rrr:::::::::r  
+         A:::::A A:::::A          l::::lp:::::::::::::::::p     X:::::X:::::X    r:::::::::::::::::r 
+        A:::::A   A:::::A         l::::lpp::::::ppppp::::::p     X:::::::::X     rr::::::rrrrr::::::r
+       A:::::A     A:::::A        l::::l p:::::p     p:::::p     X:::::::::X      r:::::r     r:::::r
+      A:::::AAAAAAAAA:::::A       l::::l p:::::p     p:::::p    X:::::X:::::X     r:::::r     rrrrrrr
+     A:::::::::::::::::::::A      l::::l p:::::p     p:::::p   X:::::X X:::::X    r:::::r            
+    A:::::AAAAAAAAAAAAA:::::A     l::::l p:::::p    p::::::pXXX:::::X   X:::::XXX r:::::r            
+   A:::::A             A:::::A   l::::::lp:::::ppppp:::::::pX::::::X     X::::::X r:::::r            
+  A:::::A               A:::::A  l::::::lp::::::::::::::::p X:::::X       X:::::X r:::::r            
+ A:::::A                 A:::::A l::::::lp::::::::::::::pp  X:::::X       X:::::X r:::::r            
+AAAAAAA                   AAAAAAAllllllllp::::::pppppppp    XXXXXXX       XXXXXXX rrrrrrr            
+                                         p:::::p                                                     
+                                         p:::::p                                                     
+                                        p:::::::p                                                    
+                                        p:::::::p                                                    
+                                        p:::::::p                                                    
+                                        ppppppppp                                                    
+                                                   """,'red'))
 
 ######################################################################
 
@@ -57,31 +78,72 @@ def bilgi():
     
     if secim=="1":
         os.system("clear")
-        ip=input(str("Hedef sitenin ip adresini giriniz: "))
+        ip=input(str("Hedef sitenin url adresini giriniz: "))
         os.system(f"dmitry -winsep {ip}")
-        bilgi()
+        
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            bilgi()
+        else :
+            os.system("clear")
+            bilgi()
 
     elif secim=="2":
         os.system("clear")
         
-        ip=input(str("Hedef sitenin ip adresini giriniz: "))
+        ip=input(str("Hedef sitenin url adresini giriniz: "))
         os.system(f"theHarvester -d {ip} -l 500 -b all")
-        bilgi()
+        
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            bilgi()
+        else :
+            os.system("clear")
+            bilgi()
     
     elif secim=="3":
         os.system("clear")
         os.system("netdiscover")
-        bilgi()
+        
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            bilgi()
+        else :
+            os.system("clear")
+            bilgi()
+
     elif secim=="4":
         os.system("clear")
         ip=input(str("Hedef sitenin url adresini giriniz: "))
         os.system(f"wafw00f -a {ip}")
-        bilgi()
+        
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            bilgi()
+        else :
+            os.system("clear")
+            bilgi()
     elif secim=="5":
         os.system("clear")
         ip=input(str("Hedef sitenin url adresini giriniz: "))
         os.system(f"dnsenum {ip}")
-        bilgi()
+        
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            bilgi()
+        else :
+            os.system("clear")
+            bilgi()
     elif secim=="0":
         os.system("clear")
         anapg()
@@ -430,6 +492,89 @@ def lynis():
 
 ######################################################################
 
+def hydra():
+    print("""
+1. Hydra İle FTP Saldırısı(Brute Force)
+2. Hydra İle SSH Saldırısı(Brute Force)
+0. Geri   
+    """)
+    secim=input("secim: ")
+    if secim=="1":
+        os.system("clear")
+        ftp=input(str("Hedef ftp adresini giriniz: "))
+
+        os.system(f"""
+hydra -l admin -p password ftp://{ftp}
+hydra -L /usr/share/wordlists/rockyou.txt.gz -P /usr/share/wordlists/rockyou.txt.gz ftp://{ftp}""")
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            hydra()
+        else :
+            os.system("clear")
+            hydra()
+        
+    elif secim=="2":
+        os.system("clear")
+        ssh=input(str("Hedef ssh adresini giriniz: "))
+        os.system(f"""hydra -l admin -p password {ssh} -t 4 ssh
+hydra -L /usr/share/wordlists/rockyou.txt.gz -P /usr/share/wordlists/rockyou.txt.gz {ssh} -t 4 ssh""")
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            hydra()
+        else :
+            os.system("clear")
+            hydra()
+    
+    elif secim=="0":
+        os.system("clear")
+        anapg()
+
+
+    else:
+        print("yanlış tuşlama yaptınız tekrar deneyiniz")
+        time.sleep(2)
+
+        hydra()
+######################################################################
+
+def exiftool():
+    print("""
+1. Fotograf Tara
+0. Geri   
+""")   
+    secim=input("secim: ")
+    if secim=="1":
+        os.system("clear")
+        yol=input(str("fotograf yolunu yazınız veya sürükleyebilirsiniz :"))
+        os.system(f"exiftool {yol}")
+        
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            exiftool()
+        else :
+            os.system("clear")
+            exiftool()
+    
+    
+    elif secim=="0":
+        os.system("clear")
+        anapg()
+
+
+    else:
+        print("yanlış tuşlama yaptınız tekrar deneyiniz")
+        
+        time.sleep(2)
+
+        exiftool()
+
+######################################################################
 def anapg():
     
     print("""
@@ -439,6 +584,8 @@ def anapg():
 4. WordPress Zafiyet Taraması
 5. SQL Ve XSS Zafiyet Taraması
 6. Local Makine Üzarinde Zafiyet Tespiti
+7. FTP Ve SSH Saldırısı
+8. Fotograf Analizi
 0. Çıkış
 
 
@@ -467,6 +614,12 @@ def anapg():
     elif islem=="6":
         os.system("clear")
         lynis()
+    elif islem=="7":
+        os.system("clear")
+        hydra()
+    elif islem=="8":
+        os.system("clear")
+        exiftool()
     elif islem=="0":
         os.system("clear")
         exit()
