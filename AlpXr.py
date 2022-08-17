@@ -1,5 +1,5 @@
 import os
-from turtle import delay
+
 from termcolor import colored
 import pyfiglet 
 import socket
@@ -7,6 +7,8 @@ import time
 
 alpxr_figlet=colored(pyfiglet.figlet_format("AlpXr", font = "standard"),'red')
 print(alpxr_figlet)
+
+######################################################################
 
 def mac():
     os.system("clear")
@@ -38,6 +40,10 @@ def mac():
         os.system("clear")
         mac()
 
+
+######################################################################
+
+
 def bilgi():
     print("""
 1. Whois Sorgusu
@@ -51,14 +57,14 @@ def bilgi():
     
     if secim=="1":
         os.system("clear")
-        ip=input(str("sitenin ip adresini giriniz: "))
+        ip=input(str("Hedef sitenin ip adresini giriniz: "))
         os.system(f"dmitry -winsep {ip}")
         bilgi()
 
     elif secim=="2":
         os.system("clear")
         
-        ip=input(str("sitenin ip adresini giriniz: "))
+        ip=input(str("Hedef sitenin ip adresini giriniz: "))
         os.system(f"theHarvester -d {ip} -l 500 -b all")
         bilgi()
     
@@ -68,12 +74,12 @@ def bilgi():
         bilgi()
     elif secim=="4":
         os.system("clear")
-        ip=input(str("sitenin ip adresini giriniz: "))
+        ip=input(str("Hedef sitenin url adresini giriniz: "))
         os.system(f"wafw00f -a {ip}")
         bilgi()
     elif secim=="5":
         os.system("clear")
-        ip=input(str("sitenin ip adresini giriniz: "))
+        ip=input(str("Hedef sitenin url adresini giriniz: "))
         os.system(f"dnsenum {ip}")
         bilgi()
     elif secim=="0":
@@ -88,7 +94,7 @@ def bilgi():
 
 
     
-
+######################################################################
 
 
 def nmap():
@@ -107,35 +113,35 @@ def nmap():
     secim=input("secim:")
     if secim=="1":
         os.system("clear")
-        url=input(str("sitenin urlsini giriniz: "))
+        url=input(str("Hedef sitenin urlsini giriniz: "))
         b=socket.gethostbyname(url)
         print(b)
-        delay(2)
+        time.sleep(2)
         nmap()
     elif secim=="2":
         os.system("clear")
-        ip=input(str("sitenin ip adresini giriniz: "))
+        ip=input(str("Hedef sitenin ip adresini giriniz: "))
         os.system(f"nmap -sn -n -v --open {ip}/24")
         nmap()
     elif secim=="3":
         os.system("clear")
-        ip=input(str("sitenin ip adresini giriniz: "))
+        ip=input(str("Hedef sitenin ip adresini giriniz: "))
         os.system(f"sudo nmap -Pn -sS -n -v --reason --open {ip}")
         nmap()
     elif secim=="4":
         os.system("clear")
-        ip=input(str("sitenin ip adresini giriniz: "))
+        ip=input(str("Hedef sitenin ip adresini giriniz: "))
         os.system(f"sudo nmap -sS -sV -sC -n -v -p 21,53,80,139,445,1001,1900 {ip}")
         nmap()
     
     elif secim=="5":
         os.system("clear")
-        ip=input(str("sitenin ip adresini giriniz: "))
+        ip=input(str("Hedef sitenin ip adresini giriniz: "))
         os.system(f"nmap -sU -v {ip}")
         nmap()
     elif secim=="6":
         os.system("clear")
-        ip=input(str("sitenin ip adresini giriniz: "))
+        ip=input(str("Hedef sitenin ip adresini giriniz: "))
         os.system(f"nmap {ip} -O -n ")
         print("0. Geri Git")
         tıkla=input("secim: ")
@@ -161,7 +167,8 @@ def nmap():
     else:
         print("yanlış tuşlama yaptınız tekrar deneyiniz")
         nmap()
-    
+
+######################################################################   
     
 def wppres():
     print("""
@@ -200,7 +207,7 @@ def wppres():
 
     if secim=="3":
         os.system("clear")
-        ip=input(str("sitenin ip adresini giriniz (www.alanadi.com): "))
+        ip=input(str("Hedef sitenin url adresini giriniz (www.alanadi.com): "))
         os.system(f" wpscan --url {ip}")
         print("0. Geri Git")
         tıkla=input("secim: ")
@@ -212,7 +219,7 @@ def wppres():
             wppres()
     if secim=="4":
         os.system("clear")
-        ip=input(str("sitenin ip adresini giriniz (www.alanadi.com): "))
+        ip=input(str("Hedef sitenin url adresini giriniz (www.alanadi.com): "))
         os.system(f" wpscan --url {ip} --enumerate u")
         print("0. Geri Git")
         tıkla=input("secim: ")
@@ -224,7 +231,7 @@ def wppres():
             wppres()
     if secim=="5":
         os.system("clear")
-        ip=input(str("sitenin ip adresini giriniz (www.alanadi.com): "))
+        ip=input(str("Hedef sitenin url adresini giriniz (www.alanadi.com): "))
         os.system(f" wpscan --url {ip} --enumerate p")
         print("0. Geri Git")
         tıkla=input("secim: ")
@@ -236,7 +243,7 @@ def wppres():
             wppres()
     if secim=="6":
         os.system("clear")
-        ip=input(str("sitenin ip adresini giriniz (www.alanadi.com): "))
+        ip=input(str("Hedef sitenin url adresini giriniz (www.alanadi.com): "))
         os.system(f" wpscan --url {ip} --enumerate ap")
         print("0. Geri Git")
         tıkla=input("secim: ")
@@ -248,7 +255,7 @@ def wppres():
             wppres()
     if secim=="7":
         os.system("clear")
-        ip=input(str("sitenin ip adresini giriniz (www.alanadi.com): "))
+        ip=input(str("Hedef sitenin url adresini giriniz (www.alanadi.com): "))
         os.system(f"wpscan --url {ip} –enumerate t ")
         print("0. Geri Git")
         tıkla=input("secim: ")
@@ -261,7 +268,7 @@ def wppres():
         
     if secim=="8":
         os.system("clear")
-        ip=input(str("sitenin ip adresini giriniz (www.alanadi.com): "))
+        ip=input(str("Hedef sitenin url adresini giriniz (www.alanadi.com): "))
         os.system(f"wpscan --url {ip} –enumerate at ")
         print("0. Geri Git")
         tıkla=input("secim: ")
@@ -273,7 +280,7 @@ def wppres():
             wppres()
     if secim=="9":
         os.system("clear")
-        ip=input(str("sitenin ip adresini giriniz (www.alanadi.com): "))
+        ip=input(str("Hedef sitenin url adresini giriniz (www.alanadi.com): "))
         kulad=input(str("kullanıcı ad bilgisi giriniz :"))
         wordlist=input(str("wordlist yolunu giriniz:"))
         os.system(f"wpscan --url {ip} –wordlist {wordlist} --username {kulad}")
@@ -295,9 +302,133 @@ def wppres():
 
     else:
         print("yanlış tuşlama yaptınız tekrar deneyiniz")
+        time.sleep(2)
         nmap()
 
+######################################################################
 
+def sqlxss():
+    os.system("clear")
+    print("""
+1. Web Standart Tarama
+2. SQL Injection Taraması
+3. XSS Taraması
+0. Geri""")
+    
+    secim=input("secim: ")
+    
+    if secim == "1":
+        os.system("clear")
+        url=input(str("Hedef sitenin urlsini giriniz: "))
+
+        os.system(f"nikto -h {url}")
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            sqlxss()
+        else :
+            os.system("clear")
+            sqlxss()
+            
+                
+    elif secim == "2":
+        os.system("clear")
+        url=input(str("Hedef sitenin urlsini giriniz: "))
+
+        os.system(f"nikto -h {url} -Cgidirs none -Tuning 9")
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            sqlxss()
+        else :
+            os.system("clear")
+            sqlxss()
+                
+    elif secim =="3":
+        os.system("clear")
+        url=input(str("Hedef sitenin urlsini giriniz: "))
+
+        os.system(f"nikto -h {url} -Cgidirs none -Tuning 4")
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            sqlxss()
+        else :
+            os.system("clear")
+            sqlxss()
+    
+    elif secim=="0":
+        os.system("clear")
+        anapg()
+
+
+    else:
+        print("yanlış tuşlama yaptınız tekrar deneyiniz")
+        time.sleep(2)
+        nmap()
+
+######################################################################
+
+def lynis():
+    print("""
+
+1. Lynis Versiyon
+2. Lynis Komutları
+3. Lynis Sistem Taraması
+4. Lynis Kurulu Degilse
+0. Geri
+    
+    """
+
+    )
+    
+    secim=input("secim: ")
+    if secim=="1":
+        os.system("clear")
+        os.system("lynis show version")
+        time.sleep(2)
+        lynis()
+    elif secim=="2":
+        os.system("clear")
+        os.system("lynis show commands")
+        time.sleep(2)
+
+        lynis()
+    elif secim=="3":
+        os.system("clear")
+        os.system("lynis audit system")
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            lynis()
+        else :
+            os.system("clear")
+            lynis()
+        
+    elif secim=="4":
+        os.system("clear")
+        os.system("sudo apt install lynis")
+        time.sleep(2)
+
+        lynis()
+    
+    elif secim=="0":
+        os.system("clear")
+        anapg()
+
+
+    else:
+        print("yanlış tuşlama yaptınız tekrar deneyiniz")
+        time.sleep(2)
+
+        lynis()
+        
+
+######################################################################
 
 def anapg():
     
@@ -306,6 +437,8 @@ def anapg():
 2. Pasif Ve Aktif Bilgi Toplama
 3. Ağ Taraması
 4. WordPress Zafiyet Taraması
+5. SQL Ve XSS Zafiyet Taraması
+6. Local Makine Üzarinde Zafiyet Tespiti
 0. Çıkış
 
 
@@ -328,6 +461,12 @@ def anapg():
     elif islem=="4":
         os.system("clear")
         wppres()
+    elif islem=="5":
+        os.system("clear")
+        sqlxss()
+    elif islem=="6":
+        os.system("clear")
+        lynis()
     elif islem=="0":
         os.system("clear")
         exit()
