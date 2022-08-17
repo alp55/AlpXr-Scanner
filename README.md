@@ -25,7 +25,7 @@ Yardımcı Tool Kurulumu
 Çalıştırma 
 
 ```
-
-sudo python3 AlpXr.py
+ cd Linux_Vulnerability_Scanner
+ sudo python3 AlpXr.py
 
 ```
