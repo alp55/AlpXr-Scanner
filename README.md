@@ -14,10 +14,10 @@ Kurulum
 Gerekli Tool Kurulumu
 
 ``` 
-
- sudo apt install lynis
- sudo apt update
- sudo apt upgrade
+ sudo apt-get install exiftool 
+ sudo apt-get install lynis
+ sudo apt-get update
+ sudo apt-get upgrade
  
 ```
 
