@@ -2,6 +2,8 @@
 
 Kali Linux üzerinde hali hazırda bulunan tooları bir araya getirip kulanım kolaylıgı saglamak amacıyla böyle bir proje geliştirdim
 
+
+
 Kurulum
 
 ``` 
@@ -9,8 +11,7 @@ Kurulum
  git clone https://github.com/alp55/Linux_Vulnerability_Scanner.git
 
 ```
-
-Yardımcı Tool Kurulumu
+Gerekli Tool Kurulumu
 
 ``` 
 
