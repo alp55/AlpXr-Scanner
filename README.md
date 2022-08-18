@@ -8,7 +8,7 @@ Kurulum
 
 ``` 
 
- git clone https://github.com/alp55/Linux_Vulnerability_Scanner.git
+ git clone https://github.com/alp55/AlpXr-Scanner.git
  
 ```
 Gerekli Tool Kurulumu
