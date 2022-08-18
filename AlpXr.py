@@ -571,9 +571,39 @@ def exiftool():
         print("yanlış tuşlama yaptınız tekrar deneyiniz")
         
         time.sleep(2)
-
         exiftool()
+######################################################################
+        
+def cupp():
+    print("""
+1. Wordlist Oluşturma Aracını yükle
+2. Wordlist Oluştur
+0. Geri """)
+    secim=input("sec")
+    if secim=="1":
+        os.system("clear")
+        os.system("git clone https://github.com/Mebus/cupp.git")
+        print("Arac yüklenmiştir")
+        time.sleep(2)
+        cupp()
+    elif secim=="2":
+        os.system("clear")
+        os.system("cd cupp.py")
+        os.system("python3 cupp.py")
+        os.system("clear")
+        cupp()
+    elif secim=="0":
+        os.system("clear")
+        anapg()
 
+
+    else:
+        print("yanlış tuşlama yaptınız tekrar deneyiniz")
+        
+        time.sleep(2)
+        cupp()
+
+   
 ######################################################################
 def anapg():
     
@@ -586,6 +616,7 @@ def anapg():
 6. Local Makine Üzarinde Zafiyet Tespiti
 7. FTP Ve SSH Saldırısı
 8. Fotograf Analizi
+9. Özleiştirlmiş Wordlist Oluşturma
 0. Çıkış
 
 
@@ -620,6 +651,9 @@ def anapg():
     elif islem=="8":
         os.system("clear")
         exiftool()
+    elif islem=="9":
+        os.system("clear")
+        cupp()
     elif islem=="0":
         os.system("clear")
         exit()
