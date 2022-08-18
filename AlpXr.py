@@ -573,7 +573,63 @@ def exiftool():
         time.sleep(2)
         exiftool()
 ######################################################################
+def skipfish():
+    print(""""
+1. Basit Tarama
+2. Orta Ölcekli Tarama
+3. Derin Tarama
+0. Geri  """)
+    secim=input("secim: ")
+    
+    if secim=="1":
+        os.system("clear")
+        url=input(str("Hedef sitenin urlsini giriniz: "))
+        sinifla=url.split("/")
+        sinifla=str(sinifla[2])
+        os.system(f"rm -r {sinifla}")
+        os.system(f"skipfish -o {sinifla} -d 2 {url}")
+        os.system(f"open {sinifla}/index.html")       
+        os.system("clear")
+        skipfish()
         
+        
+    elif secim=="2":
+        
+        os.system("clear")
+        url=input(str("Hedef sitenin urlsini giriniz: "))
+        sinifla=url.split("/")
+        sinifla=str(sinifla[2])
+        os.system(f"rm -r {sinifla}")
+        os.system(f"skipfish -o {sinifla} -d 8 {url}")
+        os.system(f"open {sinifla}/index.html")
+        os.system("clear")
+        skipfish()
+    
+    elif secim=="3":
+        
+        os.system("clear")
+        url=input(str("Hedef sitenin urlsini giriniz: "))
+        sinifla=url.split("/")
+        sinifla=str(sinifla[2])
+        os.system(f"rm -r {sinifla}")
+        os.system(f"skipfish -o {sinifla} -d 16 {url}")
+        os.system(f"open {sinifla}/index.html")
+        os.system("clear")
+        skipfish()
+    
+    
+    elif secim=="0":
+        os.system("clear")
+        anapg()
+
+
+    else:
+        print("yanlış tuşlama yaptınız tekrar deneyiniz")
+        
+        time.sleep(2)
+        skipfish()
+
+#####################################################################
 def cupp():
     print("""
 1. Wordlist Oluşturma Aracını yükle
@@ -585,11 +641,12 @@ def cupp():
         os.system("git clone https://github.com/Mebus/cupp.git")
         print("Arac yüklenmiştir")
         time.sleep(2)
+        os.system("clear")
         cupp()
     elif secim=="2":
         os.system("clear")
-        os.system("cd cupp")
-        os.system("python3 cupp.py")
+        
+        os.system("python3 ./cupp/cupp.py -i")
         os.system("clear")
         cupp()
     elif secim=="0":
@@ -616,14 +673,9 @@ def anapg():
 6. Local Makine Üzarinde Zafiyet Tespiti
 7. FTP Ve SSH Saldırısı
 8. Fotograf Analizi
-9. Özleştirilmiş Wordlist Oluşturma
-0. Çıkış
-
-
-
-
-
-""")
+9. Skipfish Taraması 
+10. Özleştirilmiş Wordlist Oluşturma
+0. Çıkış""")
 
     islem=input("secim:")
     
@@ -652,6 +704,9 @@ def anapg():
         os.system("clear")
         exiftool()
     elif islem=="9":
+        os.system("clear")
+        skipfish()
+    elif islem=="10":
         os.system("clear")
         cupp()
     elif islem=="0":
