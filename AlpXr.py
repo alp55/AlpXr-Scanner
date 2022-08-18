@@ -579,7 +579,7 @@ def cupp():
 1. Wordlist Oluşturma Aracını yükle
 2. Wordlist Oluştur
 0. Geri """)
-    secim=input("sec")
+    secim=input("secim: ")
     if secim=="1":
         os.system("clear")
         os.system("git clone https://github.com/Mebus/cupp.git")
@@ -588,7 +588,7 @@ def cupp():
         cupp()
     elif secim=="2":
         os.system("clear")
-        os.system("cd cupp.py")
+        os.system("cd cupp")
         os.system("python3 cupp.py")
         os.system("clear")
         cupp()
@@ -616,7 +616,7 @@ def anapg():
 6. Local Makine Üzarinde Zafiyet Tespiti
 7. FTP Ve SSH Saldırısı
 8. Fotograf Analizi
-9. Özleiştirlmiş Wordlist Oluşturma
+9. Özleştirilmiş Wordlist Oluşturma
 0. Çıkış
 
 
