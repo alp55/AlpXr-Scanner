@@ -25,7 +25,7 @@ Gerekli Tool Kurulumu
 
 ```
 
- cd Linux_Vulnerability_Scanner
+ cd AlpXr-Scanner
  sudo python3 AlpXr.py
  
 ```
