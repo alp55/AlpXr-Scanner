@@ -14,6 +14,7 @@ Kurulum
 Gerekli Tool Kurulumu
 
 ``` 
+ sudo apt-get install apktool
  sudo apt-get install exiftool 
  sudo apt-get install lynis
  sudo apt-get update
