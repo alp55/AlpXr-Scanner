@@ -628,6 +628,36 @@ def skipfish():
         
         time.sleep(2)
         skipfish()
+#####################################################################
+
+def apktool():
+    print("""
+1. Apk Tool Kur
+2. Apk Dosyasını Ayrıştır
+0. Geri""")
+    secim=input("secim: ")
+    if secim=="1":
+        os.system("clear")
+        os.system("sudo apt install apktool")
+        os.system("clear")
+        apktool()
+    elif secim=="2":
+        os.system("clear")
+        print("apk dosyasını bulungunuz dinize taşımalısınız")
+        ad=input("Apk dosyasının adını giriniz (test.apk)")
+        
+        os.system(f"apktool d -f -r {ad}")        
+        apktool()
+    elif secim=="0":
+        os.system("clear")
+        anapg()
+
+
+    else:
+        print("yanlış tuşlama yaptınız tekrar deneyiniz")
+        
+        time.sleep(2)
+        apktool()
 
 #####################################################################
 def cupp():
@@ -673,8 +703,9 @@ def anapg():
 6. Local Makine Üzerinde Zafiyet Tespiti
 7. FTP Ve SSH Saldırısı
 8. Fotoğraf Analizi
-9. Skipfish Taraması 
-10. Özleştirilmiş Wordlist Oluşturma
+9. Skipfish Taraması
+10. Andiroid 
+11. Özleştirilmiş Wordlist Oluşturma
 0. Çıkış""")
 
     islem=input("secim:")
@@ -707,6 +738,9 @@ def anapg():
         os.system("clear")
         skipfish()
     elif islem=="10":
+        os.system("clear")
+        apktool()
+    elif islem=="11":
         os.system("clear")
         cupp()
     elif islem=="0":
