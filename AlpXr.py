@@ -41,6 +41,9 @@ def mac():
     if secim=="1":
         os.system("clear")
         os.system("macchanger -r wlan0")
+        time.sleep(1)
+        os.system("clear")
+        anapg()
 
     elif secim=="2":
         os.system("clear")
