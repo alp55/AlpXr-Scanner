@@ -74,7 +74,7 @@ def bilgi():
 2. TheHarvester Taraması
 3. Local Ağdaki Cihazların Tespiti
 4. Dizin Taraması
-5. Dns Sorgusu
+5. DNSenum
 0. geri""")
     secim=input("secim:")
     
