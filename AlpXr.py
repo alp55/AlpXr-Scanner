@@ -173,7 +173,6 @@ def nmap():
 6. OS İzi Belirleme
 7. SPOOFİNG
 0. Geri
-
 """)
     secim=input("secim:")
     if secim=="1":
@@ -181,29 +180,64 @@ def nmap():
         url=input(str("Hedef sitenin url sini giriniz: "))
         b=socket.gethostbyname(url)
         print(b)
-        time.sleep(2)
-        nmap()
+        
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            nmap()
+        else :
+            os.system("clear")
+            nmap()
     elif secim=="2":
         os.system("clear")
         ip=input(str("Hedef sitenin ip adresini giriniz: "))
         os.system(f"nmap -sn -n -v --open {ip}/24")
-        nmap()
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            nmap()
+        else :
+            os.system("clear")
+            nmap()
     elif secim=="3":
         os.system("clear")
         ip=input(str("Hedef sitenin ip adresini giriniz: "))
         os.system(f"sudo nmap -Pn -sS -n -v --reason --open {ip}")
-        nmap()
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            nmap()
+        else :
+            os.system("clear")
+            nmap()
     elif secim=="4":
         os.system("clear")
         ip=input(str("Hedef sitenin ip adresini giriniz: "))
         os.system(f"sudo nmap -sS -sV -sC -n -v -p 21,53,80,139,445,1001,1900 {ip}")
-        nmap()
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            nmap()
+        else :
+            os.system("clear")
+            nmap()
     
     elif secim=="5":
         os.system("clear")
         ip=input(str("Hedef sitenin ip adresini giriniz: "))
         os.system(f"nmap -sU -v {ip}")
-        nmap()
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            nmap()
+        else :
+            os.system("clear")
+            nmap()
     elif secim=="6":
         os.system("clear")
         ip=input(str("Hedef sitenin ip adresini giriniz: "))
@@ -223,7 +257,14 @@ def nmap():
         Spoofed_ip=input("Spoofed_ip")
         Target_IP=input("Target_IP")
         os.system(f"nmap -S {Spoofed_ip} -e eth 0 -sS -sV -v -n -PN {Target_IP}")
-        nmap()
+        print("0. Geri Git")
+        tıkla=input("secim: ")
+        if tıkla=="0":
+            os.system("clear")
+            nmap()
+        else :
+            os.system("clear")
+            nmap()
     elif secim=="0":
         os.system("clear")
         anapg()
@@ -439,7 +480,6 @@ def sqlxss():
 
 def lynis():
     print("""
-
 1. Lynis Versiyon
 2. Lynis Komutları
 3. Lynis Sistem Taraması
