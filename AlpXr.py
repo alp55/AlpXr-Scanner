@@ -72,9 +72,9 @@ def bilgi():
     print("""
 1. Whois Sorgusu
 2. TheHarvester Taraması
-3. Local Ağdaki Cihazların Tespiti
+3. DNSenum
 4. Dizin Taraması
-5. DNSenum
+5. Nmap Araçları
 0. geri""")
     secim=input("secim:")
     
@@ -85,8 +85,8 @@ def bilgi():
         os.system(f"dmitry -winsep {ip}")
         
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             bilgi()
         else :
@@ -100,21 +100,22 @@ def bilgi():
         os.system(f"theHarvester -d {ip} -l 500 -b all")
         
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             bilgi()
         else :
             os.system("clear")
             bilgi()
-    
+
     elif secim=="3":
         os.system("clear")
-        os.system("netdiscover")
+        ip=input(str("Hedef sitenin url adresini giriniz: "))
+        os.system(f"dnsenum {ip}")
         
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             bilgi()
         else :
@@ -127,26 +128,20 @@ def bilgi():
         os.system(f"wafw00f -a {ip}")
         
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             bilgi()
         else :
             os.system("clear")
             bilgi()
+
     elif secim=="5":
         os.system("clear")
-        ip=input(str("Hedef sitenin url adresini giriniz: "))
-        os.system(f"dnsenum {ip}")
-        
-        print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
-            os.system("clear")
-            bilgi()
-        else :
-            os.system("clear")
-            bilgi()
+        nmap_aktif()
+
+
+
     elif secim=="0":
         os.system("clear")
         anapg()
@@ -160,6 +155,169 @@ def bilgi():
 
     
 ######################################################################
+
+def nmap_aktif():
+    os.system("clear")
+    print("""
+1. TCP SYN Taraması
+2. UDP Taraması
+3. Servis Versiyonları Ve İşletim Sistemi Algılama
+4. Betik Taraması
+5. Scriptler(En  çok kullanılan 7 script)
+6. Basit Tarama(2-3 dakika)
+7. Gelişmiş Tarama(15 dakika)
+0. Geri Git
+""")
+    tikla=input("secim: ")
+    if tikla=="1":
+        os.system("clear")
+        ip=input(str("Hedef sitenin url adresini giriniz: "))
+        os.system(f"nmap -sT {ip}")
+        print("0. Geri Git")
+        tikla=input("secim: ")
+
+        if tikla=="0":
+            os.system("clear")
+            nmap_aktif()
+        else : 
+            os.system("clear")
+            nmap_aktif()
+    if tikla=="2":
+        os.system("clear")
+        ip=input(str("Hedef sitenin url adresini giriniz: "))
+        os.system(f"nmap -sU {ip}")
+        print("0. Geri Git")
+        tikla=input("secim: ")
+
+        if tikla=="0":
+            os.system("clear")
+            nmap_aktif()
+        else : 
+            os.system("clear")
+            nmap_aktif()
+    if tikla=="3":
+        os.system("clear")
+        ip=input(str("Hedef sitenin url adresini giriniz: "))
+        os.system(f"nmap -v -O -sV -T4 {ip}")
+        print("0. Geri Git")
+        tikla=input("secim: ")
+
+        if tikla=="0":
+            os.system("clear")
+            nmap_aktif()
+        else : 
+            os.system("clear")
+            nmap_aktif()
+
+    if tikla=="4":
+        os.system("clear")
+        ip=input(str("Hedef sitenin url adresini giriniz: "))
+        os.system(f"nmap -sC {ip}")
+        print("0. Geri Git")
+        tikla=input("secim: ")
+
+        if tikla=="0":
+            os.system("clear")
+            nmap_aktif()
+        else : 
+            os.system("clear")
+            nmap_aktif()
+
+    if tikla=="5":
+        print("""
+http-title
+
+Hedef web sunucusundan başlık bilgilerini alır. Özellikle web uygulamalarını belirlemek ve sürümlerini tespit etmek için kullanışlıdır.
+
+-> nmap --script http-title target.com
+
+ssl-enum-ciphers
+
+Hedef sunucunun desteklediği SSL/TLS şifreleme algoritmalarını sıralar. Bu, güvenlik zafiyetlerini tespit etmek için kullanışlıdır.
+
+-> nmap --script ssl-enum-ciphers target.com
+
+smb-vuln-ms17-010
+
+MS17-010 (EternalBlue) adlı önemli bir Windows SMB açığına karşı hedef sistemleri tarar.
+
+-> map --script smb-vuln-ms17-010 target.com
+
+vulners
+
+Vulners.com veritabanını kullanarak CVE (Common Vulnerabilities and Exposures) numaraları ile ilgili güvenlik açıklarını tespit etmek için kullanılır.
+
+-> nmap --script vulners target.com
+
+ftp-anon
+
+Hedef FTP sunucusunda anonim erişime izin verip vermediğini kontrol eder.
+
+-> nmap --script ftp-anon target.com
+
+dns-zone-transfer
+
+Hedef DNS sunucusundan bölge aktarımını (zone transfer) denemek için kullanılır. Bu, DNS sunucularının kötü yapılandırılmasını tespit etmek için faydalıdır.
+
+-> nmap --script dns-zone-transfer target.com
+
+smtp-enum-users
+
+Hedef SMTP sunucusunda geçerli e-posta hesaplarını listeleyerek e-posta adreslerini keşfetmek için kullanılır.
+
+-> nmap --script smtp-enum-users target.com
+
+""")
+        script=input(str("kulanmak istediginiz script adını yazın: "))
+        ip=input(str("Hedef sitenin url adresini giriniz: "))
+        
+        os.system(f"nmap --script {script} {ip}")
+        print("0. Geri Git")
+        tikla=input("secim: ")
+
+        if tikla=="0":
+            os.system("clear")
+            nmap_aktif()
+        else : 
+            os.system("clear")
+            nmap_aktif()
+
+    if tikla=="6":
+        os.system("clear")
+        ip=input(str("Hedef sitenin url adresini giriniz: "))
+        os.system(f"nmap -vvv -sT -T4 -A {ip}")
+        print("0. Geri Git")
+        tikla=input("secim: ")
+
+        if tikla=="0":
+            os.system("clear")
+            nmap_aktif()
+        else : 
+            os.system("clear")
+            nmap_aktif()
+
+    if tikla=="7":
+        os.system("clear")
+        ip=input(str("Hedef sitenin url adresini giriniz: "))
+        os.system(f"nmap -vvv -sT -T2 -A {ip}")
+        print("0. Geri Git")
+        tikla=input("secim: ")
+
+        if tikla=="0":
+            os.system("clear")
+            nmap_aktif()
+        else : 
+            os.system("clear")
+            nmap_aktif()
+
+    if tikla=="0":
+        os.system("clear")
+        bilgi()
+    else :
+        os.system("clear")
+        bilgi()
+
+
 
 
 def nmap():
@@ -182,8 +340,8 @@ def nmap():
         print(b)
         
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             nmap()
         else :
@@ -194,8 +352,8 @@ def nmap():
         ip=input(str("Hedef sitenin ip adresini giriniz: "))
         os.system(f"nmap -sn -n -v --open {ip}/24")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             nmap()
         else :
@@ -206,8 +364,8 @@ def nmap():
         ip=input(str("Hedef sitenin ip adresini giriniz: "))
         os.system(f"sudo nmap -Pn -sS -n -v --reason --open {ip}")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             nmap()
         else :
@@ -218,8 +376,8 @@ def nmap():
         ip=input(str("Hedef sitenin ip adresini giriniz: "))
         os.system(f"sudo nmap -sS -sV -sC -n -v -p 21,53,80,139,445,1001,1900 {ip}")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             nmap()
         else :
@@ -231,8 +389,8 @@ def nmap():
         ip=input(str("Hedef sitenin ip adresini giriniz: "))
         os.system(f"nmap -sU -v {ip}")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             nmap()
         else :
@@ -243,8 +401,8 @@ def nmap():
         ip=input(str("Hedef sitenin ip adresini giriniz: "))
         os.system(f"nmap {ip} -O -n ")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             nmap()
         else :
@@ -258,8 +416,8 @@ def nmap():
         Target_IP=input("Target_IP")
         os.system(f"nmap -S {Spoofed_ip} -e eth 0 -sS -sV -v -n -PN {Target_IP}")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             nmap()
         else :
@@ -302,8 +460,8 @@ def wppres():
         os.system("clear")
         os.system("wpscan --version")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             wppres()
         else :
@@ -316,8 +474,8 @@ def wppres():
         ip=input(str("Hedef sitenin url adresini giriniz (www.alanadi.com): "))
         os.system(f" wpscan --url {ip}")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             wppres()
         else :
@@ -328,8 +486,8 @@ def wppres():
         ip=input(str("Hedef sitenin url adresini giriniz (www.alanadi.com): "))
         os.system(f" wpscan --url {ip} --enumerate u")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             wppres()
         else :
@@ -340,8 +498,8 @@ def wppres():
         ip=input(str("Hedef sitenin url adresini giriniz (www.alanadi.com): "))
         os.system(f" wpscan --url {ip} --enumerate p")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             wppres()
         else :
@@ -352,8 +510,8 @@ def wppres():
         ip=input(str("Hedef sitenin url adresini giriniz (www.alanadi.com): "))
         os.system(f" wpscan --url {ip} --enumerate ap")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             wppres()
         else :
@@ -364,8 +522,8 @@ def wppres():
         ip=input(str("Hedef sitenin url adresini giriniz (www.alanadi.com): "))
         os.system(f"wpscan --url {ip} –enumerate t ")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             wppres()
         else :
@@ -377,8 +535,8 @@ def wppres():
         ip=input(str("Hedef sitenin url adresini giriniz (www.alanadi.com): "))
         os.system(f"wpscan --url {ip} –enumerate at ")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             wppres()
         else :
@@ -391,8 +549,8 @@ def wppres():
         wordlist=input(str("wordlist yolunu giriniz:"))
         os.system(f"wpscan --url {ip} –wordlist {wordlist} --username {kulad}")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             wppres()
         else :
@@ -429,8 +587,8 @@ def sqlxss():
 
         os.system(f"nikto -h {url}")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             sqlxss()
         else :
@@ -444,8 +602,8 @@ def sqlxss():
 
         os.system(f"nikto -h {url} -Cgidirs none -Tuning 9")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             sqlxss()
         else :
@@ -458,8 +616,8 @@ def sqlxss():
 
         os.system(f"nikto -h {url} -Cgidirs none -Tuning 4")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             sqlxss()
         else :
@@ -506,8 +664,8 @@ def lynis():
         os.system("clear")
         os.system("lynis audit system")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             lynis()
         else :
@@ -550,8 +708,8 @@ def hydra():
 hydra -l admin -p password ftp://{ftp}
 hydra -L /usr/share/wordlists/rockyou.txt.gz -P /usr/share/wordlists/rockyou.txt.gz ftp://{ftp}""")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             hydra()
         else :
@@ -564,8 +722,8 @@ hydra -L /usr/share/wordlists/rockyou.txt.gz -P /usr/share/wordlists/rockyou.txt
         os.system(f"""hydra -l admin -p password {ssh} -t 4 ssh
 hydra -L /usr/share/wordlists/rockyou.txt.gz -P /usr/share/wordlists/rockyou.txt.gz {ssh} -t 4 ssh""")
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             hydra()
         else :
@@ -596,8 +754,8 @@ def exiftool():
         os.system(f"exiftool {yol}")
         
         print("0. Geri Git")
-        tıkla=input("secim: ")
-        if tıkla=="0":
+        tikla=input("secim: ")
+        if tikla=="0":
             os.system("clear")
             exiftool()
         else :
